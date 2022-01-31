@@ -1,0 +1,22 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+ header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 400;
+  background-color: aquamarine;
+  padding: 5px;
+  background-image:url(http://www.transparenttextures.com/patterns/axiom-pattern.png);
+}
+/*
+ * Global layout stuff
+ */
+
+
+

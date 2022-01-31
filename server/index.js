@@ -9,9 +9,11 @@ const app           = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+//FLAG - static is express middleware:serve images, css, js files in a directory named public
 
 // The in-memory database of tweets. It's a basic object with an array in it.
 const db = require("./lib/in-memory-db");
+//FLAG- db is defined here, but is drawing from JSON file initial-tweets
 
 // The `data-helpers` module provides an interface to the database of tweets.
 // This simple interface layer has a big benefit: we could switch out the
@@ -21,13 +23,16 @@ const db = require("./lib/in-memory-db");
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
 const DataHelpers = require("./lib/data-helpers.js")(db);
+//FLAG- save and get tweet functions here
 
 // Update the dates for the initial tweets (data-files/initial-tweets.json).
 require("./lib/date-adjust")();
+//FLAG- dig deeper to understand here - not sure what this is doing
 
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
 // so it can define routes that use it to interact with the data layer.
 const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+//FLAG- this is our routes page (get post etc)
 
 // Mount the tweets routes at the "/tweets" path prefix:
 app.use("/tweets", tweetsRoutes);

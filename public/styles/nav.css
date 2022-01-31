@@ -1,0 +1,44 @@
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+nav {
+  box-sizing: border-box;
+  height: 120px
+}
+
+/*
+ * Global layout stuff
+ */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFFFFF;
+  background-color: #4056A1;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 1.5em;
+  z-index: 2;
+}
+
+span {
+  font-family: 'Bungee', cursive;
+}
+div.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+div.anglebracket {
+  text-align: center;
+  color: red;
+}
+div.write {
+  display: flex;
+justify-content: flex-end;
+}
