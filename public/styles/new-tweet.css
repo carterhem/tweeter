@@ -32,3 +32,10 @@ section.new-tweet {
   width: 100% 
 }
 
+.counterYellow {
+  color: yellow;
+}
+
+.counterRed {
+  color: red;
+}
