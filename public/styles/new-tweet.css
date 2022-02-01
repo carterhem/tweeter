@@ -1,0 +1,34 @@
+#newTweetButton {
+  color: #FFFFFF;
+  background-color: #4056A1;
+}
+
+#tweet-text {
+  background: transparent;
+    border: none;
+    border-bottom: 5px solid #545149;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+}
+
+#tweet-text:focus {
+  outline: none;
+}
+
+#newTweetFooter {
+  font-family: 'Bungee', cursive;
+  display: flex;
+  justify-content: space-between;
+}
+
+#tweetTextWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+section.new-tweet {
+  width: 100% 
+}
+
