@@ -5,9 +5,22 @@
     <title>Tweeter - Home Page</title>
 
     <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -21,7 +34,10 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script
+      type="text/javascript"
+      src="/scripts/composer-char-counter.js"
+    ></script>
   </head>
 
   <body>
@@ -31,42 +47,67 @@
       <div class="write">
         <div class="action">
           <div class="sentence"><strong>Write </strong> a new tweet</div>
-          <div class="anglebracket"><i class="fas fa-angle-double-down"></i> </div>
+          <div class="anglebracket">
+            <i class="fas fa-angle-double-down"></i>
+          </div>
         </div>
       </div>
     </nav>
-    
+
     <header>
       <div>
-          <img src="/images/profile-hex.png"> 
+        <img src="/images/profile-hex.png" />
       </div>
-      <br>
+      <br />
       <div>
-          <h2>Carter Hemington</h2>
+        <h2>Carter Hemington</h2>
       </div>
-  </header>
+    </header>
 
-    <!-- Page-specific (main) content here -->   
+    <!-- Page-specific (main) content here -->
     <main class="container">
-       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p> -->
-       <section class="new-tweet">
+      <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets/">
           <div id="tweetTextWrapper">
-          <!-- <label for="tweet-text"><strong>What are you humming about?</strong></label> -->
-          <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
-        </div>
-          <div id ="newTweetFooter">
-              <button id="newTweetButton" type="submit">Tweet</button>
+            <textarea
+              placeholder="What are you humming about?"
+              name="text"
+              id="tweet-text"
+            ></textarea>
+          </div>
+          <div id="newTweetFooter">
+            <button id="newTweetButton" type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
       </section>
       <div class="tweetContainer">
-        <article>
-
+        <article class="tweet">
+          <header class="tweetHeader">
+            <div class="tweetPoster">
+              <i class="far fa-user"></i>
+              <p>Newton</p>
+            </div>
+            <address>@SirIsaac</address>
+          </header>
+          <div class="textInTweet">
+            <h5>
+              If I have seen further it is by standing on the shoulders of
+              giants
+            </h5>
+          </div>
+          <footer class="tweetFooter">
+            <p>10 days ago</p>
+            <div class="icons">
+              <a
+                ><i class="fas fa-flag"></i><i class="fas fa-retweet"></i
+                ><i class="fas fa-heart"></i
+              ></a>
+            </div>
+          </footer>
         </article>
       </div>
-      </main>
+    </main>
   </body>
 </html>

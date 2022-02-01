@@ -5,7 +5,7 @@ $(document).ready(function() {
   $("#tweet-text").on("input", function() {
     console.log("input");
     const length = $(this).val().length;
-    $(".counter").val(5 - length);
+    $(".counter").val(140 - length);
     // if ($(".counter").val() < 0) {
     //   $(".counter").css("color", "red");
     // } else {
@@ -22,9 +22,4 @@ $(document).ready(function() {
   })
 });
 //second child of second child of parent of parent
-
-
-
-// $("#tweet-text").on("click", function() {
-//   console.log("click")
-// })
+// const counter = $(this).siblings().children().eq(1);
