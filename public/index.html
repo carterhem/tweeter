@@ -35,10 +35,37 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/submitTweet.js"></script>
     <script
       type="text/javascript"
       src="/scripts/composer-char-counter.js"
     ></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    
+    
+  //eventlister attempt 1  
+  //add document on ready
+  // document.getElementById("#tweetForm").addEventListener("submit", function(event) {
+  //   console.log('Preventing default Submit Event for newTweetButton');
+  //       event.preventDefault();
+  // });  
+
+//eventlistener attempt 2
+// $(document).ready(function() {
+//   $("#newTweetButton").on("submit", function(event) {
+// //    //have tried form and button, not stopping tweets
+//         console.log('Preventing default Submit Event for newTweetButton');
+//         event.preventDefault();
+// //         // $.ajax('more-posts.html', { method: 'GET' })
+// //         // .then(function (morePostsHtml) {
+// //         //   console.log('Success: ', morePostsHtml);
+// //         //   $button.replaceWith(morePostsHtml);
+// //         // });
+// //     });
+// })
+// });
+    </script>
   </head>
 
   <body>
@@ -69,7 +96,7 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets/">
+        <form id="tweetForm" method="POST" action="/tweets">
           <div id="tweetTextWrapper">
             <textarea
               placeholder="What are you humming about?"
