@@ -81,24 +81,37 @@ $(document).ready(function () {
   // renderTweets(data);
 
   $("#tweetForm").submit(function (event) {
+    event.preventDefault();
     console.log("Button clicked, performing ajax call...");
+    // console.log("event", event)
+    const x = $("#tweet-text").val();
+    const y = x.length;
+    //this or proper syntax
+
+   if (x === null || x === "") {
+     alert("Error: no data was submitted")
+     return false;
+   } else if (y > 140) {
+    alert("Error: over 140 characters submitted")
+    return false;
+   } else {
     const tweetFormData = $(this).serialize();
     $.post("/tweets", tweetFormData)
     .then(response => {
       loadTweets()
     })
+   }
+    
   });
 
   const loadTweets = function (tweets) {
     console.log("loadTweets activated!");
     $.get("/tweets")
     .then(response => {
-      console.log("response received from /tweets", response)
+      console.log("response", response)
       renderTweets(response)
     })
-    .catch(error => {
-      console.log("error", error)
-    })
+    
   };
   loadTweets();
 
