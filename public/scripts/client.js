@@ -4,45 +4,44 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function() {
-  console.log("DOM is ready to be manipulated")
+$(document).ready(function () {
+  console.log(" DOM is ready to be manipulated");
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+  // const data = [
+  //   // {
+  //   //   user: {
+  //   //     name: "Newton",
+  //   //     avatars: "https://i.imgur.com/73hZDYK.png",
+  //   //     handle: "@SirIsaac",
+  //   //   },
+  //   //   content: {
+  //   //     text: "If I have seen further it is by standing on the shoulders of giants",
+  //   //   },
+  //   //   created_at: 1461116232227,
+  //   // },
+  //   // {
+  //   //   user: {
+  //   //     name: "Descartes",
+  //   //     avatars: "https://i.imgur.com/nlhLi3I.png",
+  //   //     handle: "@rd",
+  //   //   },
+  //   //   content: {
+  //   //     text: "Je pense , donc je suis",
+  //   //   },
+  //   //   created_at: 1461113959088,
+  //   // },
+  // ];
 
-  const renderTweets = function(tweets) {
+  const renderTweets = function (tweets) {
     //loops through tweets
     for (const tweet of tweets) {
-       //calls createTweetElement for each tweet
-       $('.tweetContainer').prepend(createTweetElement(tweet));
-       //takes return value and appends it to each tweet container
+      //calls createTweetElement for each tweet
+      $(".tweetContainer").prepend(createTweetElement(tweet));
+      //takes return value and prepends it to each tweet container
     }
-    
-  }
+  };
 
-  const createTweetElement = function(tweet) {
+  const createTweetElement = function (tweet) {
     const $tweet = `
     <article class="tweet">
           <header class="tweetHeader">
@@ -67,34 +66,51 @@ $(document).ready(function() {
             </div>
           </footer>
         </article>
-    `
-    
-    return $tweet
-  }
+    `;
+
+    return $tweet;
+  };
   // Test / driver code (temporary). Eventually will get this from the server.
-  
 
-// const $tweet = createTweetElement(data);
+  // const $tweet = createTweetElement(data);
 
-// Test / driver code (temporary)
-// console.log($tweet); // to see what it looks like
-// $('.tweetContainer').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+  // Test / driver code (temporary)
+  // console.log($tweet); // to see what it looks like
+  // $('.tweetContainer').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
-renderTweets(data);
+  // renderTweets(data);
 
-$("#tweetForm").submit(function (event) {
-  console.log('Button clicked, performing ajax call...');
-  const tweetFormData = $(this).serialize()
-  $.post("/tweets", tweetFormData)
-  })
+  $("#tweetForm").submit(function (event) {
+    console.log("Button clicked, performing ajax call...");
+    const tweetFormData = $(this).serialize();
+    $.post("/tweets", tweetFormData)
+    .then(response => {
+      loadTweets()
+    })
+  });
 
+  const loadTweets = function (tweets) {
+    console.log("loadTweets activated!");
+    $.get("/tweets")
+    .then(response => {
+      console.log("response received from /tweets", response)
+      renderTweets(response)
+    })
+    .catch(error => {
+      console.log("error", error)
+    })
+  };
+  loadTweets();
+
+
+  // $("#tweetForm").submit(function (event) {
+  //   const loadTweets = function (tweets) {
+  //     console.log("loadTweets activated!");
+  //     $.get("/tweets", function(data) {
+  //       console.log("data passed");
+  //       renderTweets(data);
+  //     });
+  //   };
+  //   loadTweets();
+  // });
 });
-
-
-// $(document).ready(function() {
-// $("#tweetForm").submit(function (event) {
-// console.log('Button clicked, performing ajax call...');
-// const tweetFormData = $(this).serialize()
-// $.post("/tweets", tweetFormData)
-// })
-// });
