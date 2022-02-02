@@ -42,6 +42,11 @@ $(document).ready(function () {
   };
 
   const createTweetElement = function (tweet) {
+    const clean = function (string) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(string));
+      return div.innerHTML;
+    };
     const $tweet = `
     <article class="tweet">
           <header class="tweetHeader">
@@ -53,7 +58,7 @@ $(document).ready(function () {
           </header>
           <div class="textInTweet">
             <h5>
-             ${tweet.content.text}
+            ${clean(tweet.content.text)}
             </h5>
           </div>
           <footer class="tweetFooter">
@@ -83,38 +88,40 @@ $(document).ready(function () {
   $("#tweetForm").submit(function (event) {
     event.preventDefault();
     console.log("Button clicked, performing ajax call...");
-    // console.log("event", event)
-    const x = $("#tweet-text").val();
-    const y = x.length;
-    //this or proper syntax
-
-   if (x === null || x === "") {
-     alert("Error: no data was submitted")
-     return false;
-   } else if (y > 140) {
-    alert("Error: over 140 characters submitted")
-    return false;
-   } else {
-    const tweetFormData = $(this).serialize();
-    $.post("/tweets", tweetFormData)
-    .then(response => {
-      loadTweets()
-    })
-   }
     
+    // const clean = function (string) {
+    //   let div = document.createElement("div");
+    //   div.appendChild(document.createTextNode(string));
+    //   return div.innerHTML;
+    // };
+    
+    const x = $("#tweet-text").val();
+    console.log("x", x)
+    const y = x.length;
+
+    if (x === null || x === "") {
+      alert("Error: no data was submitted");
+      return false;
+    } else if (y > 140) {
+      alert("Error: over 140 characters submitted");
+      return false;
+    } else {
+      const tweetFormData = $(this).serialize();
+      console.log("tweetFormData",tweetFormData)
+      $.post("/tweets", tweetFormData).then((response) => {
+        loadTweets();
+      });
+    }
   });
 
   const loadTweets = function (tweets) {
     console.log("loadTweets activated!");
-    $.get("/tweets")
-    .then(response => {
-      console.log("response", response)
-      renderTweets(response)
-    })
-    
+    $.get("/tweets").then((response) => {
+      console.log("response", response);
+      renderTweets(response);
+    });
   };
   loadTweets();
-
 
   // $("#tweetForm").submit(function (event) {
   //   const loadTweets = function (tweets) {
@@ -127,3 +134,6 @@ $(document).ready(function () {
   //   loadTweets();
   // });
 });
+
+
+{/* <script>alert("uh oh!");</script> */}
