@@ -81,4 +81,20 @@ $(document).ready(function() {
 // $('.tweetContainer').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
 renderTweets(data);
+
+$("#tweetForm").submit(function (event) {
+  console.log('Button clicked, performing ajax call...');
+  const tweetFormData = $(this).serialize()
+  $.post("/tweets", tweetFormData)
+  })
+
 });
+
+
+// $(document).ready(function() {
+// $("#tweetForm").submit(function (event) {
+// console.log('Button clicked, performing ajax call...');
+// const tweetFormData = $(this).serialize()
+// $.post("/tweets", tweetFormData)
+// })
+// });
