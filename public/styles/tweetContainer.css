@@ -73,3 +73,10 @@ article.tweet {
 .fa-user {
   padding-right: 7px;
 }
+
+.errorBox {
+  border: 5px solid red;
+  padding: 10px;
+  color: red;
+  font-size: 20px
+}

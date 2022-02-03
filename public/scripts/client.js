@@ -6,6 +6,7 @@
 
 $(document).ready(function () {
   console.log(" DOM is ready to be manipulated");
+  $(".errorBox").slideUp()
 
   // const data = [
   //   // {
@@ -88,30 +89,32 @@ $(document).ready(function () {
   $("#tweetForm").submit(function (event) {
     event.preventDefault();
     console.log("Button clicked, performing ajax call...");
-    
-    // const clean = function (string) {
-    //   let div = document.createElement("div");
-    //   div.appendChild(document.createTextNode(string));
-    //   return div.innerHTML;
-    // };
-    
+    $(".errorBox").slideUp(100000)
+    // $("#errorBox").hide()
+    // console.log("errorbox hidden")
+    // .removeClass(".errorBox")
+
     const x = $("#tweet-text").val();
-    console.log("x", x)
     const y = x.length;
 
     if (x === null || x === "") {
-      alert("Error: no data was submitted");
+      $(".errorBox").slideDown()
+      $(".errorMessage").text("Error: no data was submitted!")
       return false;
-    } else if (y > 140) {
-      alert("Error: over 140 characters submitted");
+    } 
+    
+    if (y > 140) {
+      $(".errorBox").slideDown()
+      $(".errorMessage").text("Error: there is a maximum limit of 140 characters!")
       return false;
-    } else {
+    }
+  
       const tweetFormData = $(this).serialize();
       console.log("tweetFormData",tweetFormData)
       $.post("/tweets", tweetFormData).then((response) => {
         loadTweets();
       });
-    }
+
   });
 
   const loadTweets = function (tweets) {
@@ -134,6 +137,3 @@ $(document).ready(function () {
   //   loadTweets();
   // });
 });
-
-
-{/* <script>alert("uh oh!");</script> */}
