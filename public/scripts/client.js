@@ -12,18 +12,12 @@ $(document).ready(function () {
     console.log("input");
     const length = $(this).val().length;
     $(".counter").val(140 - length);
-    // if ($(".counter").val() < 0) {
-    //   $(".counter").css("color", "red");
-    // } else {
-    //   $(".counter").css("color", "yellow")
-    // }
     if ($(".counter").val() < 0) {
       $(".counter").removeClass( "counterBlack" );
       $(".counter").addClass( "counterRed" );
     } 
     else if($(".counter").val() > 0) {
       $(".counter").removeClass( "counterRed" );
-    //   $(".counter").addClass( "counterYellow" );
     }
   })
 
@@ -70,23 +64,11 @@ $(document).ready(function () {
 
     return $tweet;
   };
-  // Test / driver code (temporary). Eventually will get this from the server.
 
-  // const $tweet = createTweetElement(data);
-
-  // Test / driver code (temporary)
-  // console.log($tweet); // to see what it looks like
-  // $('.tweetContainer').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
-
-  // renderTweets(data);
 
   $("#tweetForm").submit(function (event) {
     event.preventDefault();
     console.log("Button clicked, performing ajax call...");
-    $(".errorBox").slideUp(100000)
-    // $("#errorBox").hide()
-    // console.log("errorbox hidden")
-    // .removeClass(".errorBox")
 
     const x = $("#tweet-text").val();
     const y = x.length;
@@ -94,12 +76,18 @@ $(document).ready(function () {
     if (x === null || x === "") {
       $(".errorBox").slideDown()
       $(".errorMessage").text("Error: no data was submitted!")
+      setTimeout(() => {
+        $(".errorBox").slideUp()
+      }, 4000)
       return false;
     } 
     
     if (y > 140) {
       $(".errorBox").slideDown()
       $(".errorMessage").text("Error: there is a maximum limit of 140 characters!")
+      setTimeout(() => {
+        $(".errorBox").slideUp()
+      }, 4000)
       return false;
     }
   
@@ -107,6 +95,7 @@ $(document).ready(function () {
       console.log("tweetFormData",tweetFormData)
       $.post("/tweets", tweetFormData).then((response) => {
         loadTweets();
+        $("#tweetForm").trigger("reset");
       });
 
   });
@@ -120,14 +109,4 @@ $(document).ready(function () {
   };
   loadTweets();
 
-  // $("#tweetForm").submit(function (event) {
-  //   const loadTweets = function (tweets) {
-  //     console.log("loadTweets activated!");
-  //     $.get("/tweets", function(data) {
-  //       console.log("data passed");
-  //       renderTweets(data);
-  //     });
-  //   };
-  //   loadTweets();
-  // });
 });
