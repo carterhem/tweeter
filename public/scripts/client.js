@@ -7,31 +7,25 @@
 $(document).ready(function () {
   console.log(" DOM is ready to be manipulated");
   $(".errorBox").slideUp()
-
-  // const data = [
-  //   // {
-  //   //   user: {
-  //   //     name: "Newton",
-  //   //     avatars: "https://i.imgur.com/73hZDYK.png",
-  //   //     handle: "@SirIsaac",
-  //   //   },
-  //   //   content: {
-  //   //     text: "If I have seen further it is by standing on the shoulders of giants",
-  //   //   },
-  //   //   created_at: 1461116232227,
-  //   // },
-  //   // {
-  //   //   user: {
-  //   //     name: "Descartes",
-  //   //     avatars: "https://i.imgur.com/nlhLi3I.png",
-  //   //     handle: "@rd",
-  //   //   },
-  //   //   content: {
-  //   //     text: "Je pense , donc je suis",
-  //   //   },
-  //   //   created_at: 1461113959088,
-  //   // },
-  // ];
+  
+  $("#tweet-text").on("input", function() {
+    console.log("input");
+    const length = $(this).val().length;
+    $(".counter").val(140 - length);
+    // if ($(".counter").val() < 0) {
+    //   $(".counter").css("color", "red");
+    // } else {
+    //   $(".counter").css("color", "yellow")
+    // }
+    if ($(".counter").val() < 0) {
+      $(".counter").removeClass( "counterBlack" );
+      $(".counter").addClass( "counterRed" );
+    } 
+    else if($(".counter").val() > 0) {
+      $(".counter").removeClass( "counterRed" );
+    //   $(".counter").addClass( "counterYellow" );
+    }
+  })
 
   const renderTweets = function (tweets) {
     //loops through tweets
