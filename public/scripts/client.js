@@ -4,24 +4,22 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-$(document).ready(function () {
-  console.log(" DOM is ready to be manipulated");
-  $(".errorBox").slideUp()
-  
-  $("#tweet-text").on("input", function() {
-    console.log("input");
-    const length = $(this).val().length;
-    $(".counter").val(140 - length);
-    if ($(".counter").val() < 0) {
-      $(".counter").removeClass( "counterBlack" );
-      $(".counter").addClass( "counterRed" );
-    } 
-    else if($(".counter").val() > 0) {
-      $(".counter").removeClass( "counterRed" );
-    }
-  })
+$(document).ready(function() {
 
-  const renderTweets = function (tweets) {
+  $("#tweet-text").on("input", function() {
+    const length = $(this).val().length;
+    //grab the 
+    $(".counter").val(140 - length);
+  
+    if ($(".counter").val() < 0) {
+      $(".counter").removeClass("counterBlack");
+      $(".counter").addClass("counterRed");
+    } else if ($(".counter").val() > 0) {
+      $(".counter").removeClass("counterRed");
+    }
+  });
+
+  const renderTweets = function(tweets) {
     //loops through tweets
     for (const tweet of tweets) {
       //calls createTweetElement for each tweet
@@ -30,8 +28,8 @@ $(document).ready(function () {
     }
   };
 
-  const createTweetElement = function (tweet) {
-    const clean = function (string) {
+  const createTweetElement = function(tweet) {
+    const clean = function(string) {
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(string));
       return div.innerHTML;
@@ -65,8 +63,7 @@ $(document).ready(function () {
     return $tweet;
   };
 
-
-  $("#tweetForm").submit(function (event) {
+  $("#tweetForm").submit(function(event) {
     event.preventDefault();
     console.log("Button clicked, performing ajax call...");
 
@@ -74,33 +71,34 @@ $(document).ready(function () {
     const y = x.length;
 
     if (x === null || x === "") {
-      $(".errorBox").slideDown()
-      $(".errorMessage").text("Error: no data was submitted!")
+      $(".errorBox").slideDown();
+      $(".errorMessage").text("Error: no data was submitted!");
       setTimeout(() => {
-        $(".errorBox").slideUp()
-      }, 4000)
-      return false;
-    } 
-    
-    if (y > 140) {
-      $(".errorBox").slideDown()
-      $(".errorMessage").text("Error: there is a maximum limit of 140 characters!")
-      setTimeout(() => {
-        $(".errorBox").slideUp()
-      }, 4000)
+        $(".errorBox").slideUp();
+      }, 4000);
       return false;
     }
-  
-      const tweetFormData = $(this).serialize();
-      console.log("tweetFormData",tweetFormData)
-      $.post("/tweets", tweetFormData).then((response) => {
-        loadTweets();
-        $("#tweetForm").trigger("reset");
-      });
 
+    if (y > 140) {
+      $(".errorBox").slideDown();
+      $(".errorMessage").text(
+        "Error: there is a maximum limit of 140 characters!"
+      );
+      setTimeout(() => {
+        $(".errorBox").slideUp();
+      }, 4000);
+      return false;
+    }
+
+    const tweetFormData = $(this).serialize();
+    console.log("tweetFormData", tweetFormData);
+    $.post("/tweets", tweetFormData).then((response) => {
+      loadTweets();
+      $("#tweetForm").trigger("reset");
+    });
   });
 
-  const loadTweets = function (tweets) {
+  const loadTweets = function(tweets) {
     console.log("loadTweets activated!");
     $.get("/tweets").then((response) => {
       console.log("response", response);
@@ -108,5 +106,4 @@ $(document).ready(function () {
     });
   };
   loadTweets();
-
 });
