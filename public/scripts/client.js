@@ -8,13 +8,16 @@ $(document).ready(function() {
 
   $("#tweet-text").on("input", function() {
     const length = $(this).val().length;
-    //grab the 
+    //grab the length of the value of the input
     $(".counter").val(140 - length);
+
   
     if ($(".counter").val() < 0) {
+    //if we are under zero in character counter - change counter to red
       $(".counter").removeClass("counterBlack");
       $(".counter").addClass("counterRed");
     } else if ($(".counter").val() > 0) {
+      //if we remove characters to get under 140, remove red class (numbers go back to black)
       $(".counter").removeClass("counterRed");
     }
   });
@@ -30,6 +33,7 @@ $(document).ready(function() {
 
   const createTweetElement = function(tweet) {
     const clean = function(string) {
+      //creating function to nullify script in textarea
       let div = document.createElement("div");
       div.appendChild(document.createTextNode(string));
       return div.innerHTML;
@@ -65,45 +69,52 @@ $(document).ready(function() {
 
   $("#tweetForm").submit(function(event) {
     event.preventDefault();
-    console.log("Button clicked, performing ajax call...");
+    //stopping the default call
 
     const x = $("#tweet-text").val();
     const y = x.length;
+    //creating variables for error validation
 
     if (x === null || x === "") {
+      //if input is null or empty string - throw a relevant error
       $(".errorBox").slideDown();
       $(".errorMessage").text("Error: no data was submitted!");
       setTimeout(() => {
+        //adding settimout so error message eventually leaves
         $(".errorBox").slideUp();
       }, 4000);
       return false;
     }
 
     if (y > 140) {
+         //if input is over 140
       $(".errorBox").slideDown();
       $(".errorMessage").text(
         "Error: there is a maximum limit of 140 characters!"
       );
       setTimeout(() => {
+        //adding settimout so error message eventually leaves
         $(".errorBox").slideUp();
       }, 4000);
       return false;
     }
 
     const tweetFormData = $(this).serialize();
-    console.log("tweetFormData", tweetFormData);
+    //serializing form input
     $.post("/tweets", tweetFormData).then((response) => {
       loadTweets();
+       //calling loadtweets
       $("#tweetForm").trigger("reset");
+      //resetting the form so input clears
     });
   });
 
   const loadTweets = function(tweets) {
-    console.log("loadTweets activated!");
     $.get("/tweets").then((response) => {
-      console.log("response", response);
+      //sending to rendertweets
       renderTweets(response);
     });
   };
   loadTweets();
+  //calling loadtweets
 });
