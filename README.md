@@ -6,7 +6,7 @@ A bare bones single-page AJAX-based Twitter clone that utilizes jQuery, HTML5 an
 
 !["Screenshot of desktop mode"](https://github.com/carterhem/tweeter/blob/master/docs/desktop%20mode.png?raw=true)
 
-!["screenshot of mobile mode"](https://github.com/carterhem/tinyapp/blob/master/docs/urls-page.png?raw=true)
+!["screenshot of mobile mode"](https://github.com/carterhem/tweeter/blob/master/docs/mobile%20mode.png?raw=true)
 
 ## Dependencies
 
