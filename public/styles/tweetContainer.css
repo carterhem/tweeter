@@ -1,23 +1,28 @@
+/* Mobile Styles */
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .tweetContainer {
   color: #545149;
   background-color: #f4f1ec;
-  /* border: 5px solid #545149; */
   margin-top: 15px;
   margin-bottom: 15px;
   padding: 3px;
+  width: 100%;
 }
 
 .tweet {
   border: 5px solid #545149;
   margin-top: 10px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
-
 
 .tweet:hover {
   box-shadow: 10px 5px 5px grey;
@@ -59,7 +64,9 @@ article.tweet {
   font-size: 18px;
 }
 
-.fa-heart:hover, .fa-retweet:hover, .fa-flag:hover  {
+.fa-heart:hover,
+.fa-retweet:hover,
+.fa-flag:hover {
   color: rgb(231, 202, 39);
   cursor: pointer;
 }
@@ -74,10 +81,10 @@ article.tweet {
   padding-right: 7px;
 }
 
-.errorBox {
-  
-  border: 5px solid red;
-  padding: 10px;
-  color: red;
-  font-size: 20px
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  .container {
+    width: 67%;
+    float: right;
+  }
 }

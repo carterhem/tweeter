@@ -32,7 +32,12 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+      integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -52,38 +57,44 @@
         </div>
       </div>
     </nav>
+    <div class="headerAndMain">
+      <header class="banner">
+        <div>
+          <img src="/images/profile-hex.png" />
+        </div>
+        <br />
+        <div>
+          <h2>Carter Hemington</h2>
+        </div>
+      </header>
 
-    <header class="banner">
-      <div>
-        <img src="/images/profile-hex.png" />
-      </div>
-      <br />
-      <div>
-        <h2>Carter Hemington</h2>
-      </div>
-    </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <div class="errorBox"><i class="fas fa-exclamation-triangle"></i><span class= "errorMessage">error box</span><i class="fas fa-exclamation-triangle"></i></div>
-        <h2>Compose Tweet</h2>
-        <form id="tweetForm" method="POST" action="/tweets">
-          <div id="tweetTextWrapper">
-            <textarea
-              placeholder="What are you humming about?"
-              name="text"
-              id="tweet-text"
-            ></textarea>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <div class="errorBox">
+            <i class="fas fa-exclamation-triangle"></i
+            ><span class="errorMessage">error box</span
+            ><i class="fas fa-exclamation-triangle"></i>
           </div>
-          <div id="newTweetFooter">
-            <button id="newTweetButton" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <div class="tweetContainer">
-      </div>
-    </main>
+          <h2>Compose Tweet</h2>
+          <form id="tweetForm" method="POST" action="/tweets">
+            <div id="tweetTextWrapper">
+              <textarea
+                placeholder="What are you humming about?"
+                name="text"
+                id="tweet-text"
+              ></textarea>
+            </div>
+            <div id="newTweetFooter">
+              <button id="newTweetButton" type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text"
+                >140</output
+              >
+            </div>
+          </form>
+        </section>
+        <div class="tweetContainer"></div>
+      </main>
+    </div>
   </body>
 </html>

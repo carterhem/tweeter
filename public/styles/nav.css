@@ -3,20 +3,23 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
+/* Mobile Styles */
 nav {
   box-sizing: border-box;
-  height: 120px
+  height: 120px;
 }
-
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #FFFFFF;
-  background-color: #4056A1;
+  color: #ffffff;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: rgb(90, 172, 145);
+  padding: 30px;
+  background-image: url(http://www.transparenttextures.com/patterns/concrete-wall-3.png);
   padding: 1.5em;
   z-index: 2;
   position: fixed;
@@ -25,13 +28,12 @@ nav {
 }
 
 span {
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
 }
 div.action {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 div.anglebracket {
@@ -40,5 +42,16 @@ div.anglebracket {
 }
 div.write {
   display: flex;
-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056a1;
+    background-image: none;
+    padding: 1.5em;
+    z-index: 2;
+    position: fixed;
+  }
 }
