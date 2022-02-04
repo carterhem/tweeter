@@ -1,6 +1,6 @@
-# TinyApp Project
+# Tweeter Project
 
-TinyApp is a full stack web application built with Node and Express that allows users to shorten long URLs (similar to bit.ly).
+A bare bones single-page AJAX-based Twitter clone that utilizes jQuery, HTML5 and CSS3 to help fine tune my front end skills with this specific stack.
 
 ## Final Product
 
@@ -10,14 +10,11 @@ TinyApp is a full stack web application built with Node and Express that allows 
 
 ## Dependencies
 
-- Node.js
-- Express
-- EJS
-- bcrypt
-- body-parser
-- cookie-session
+-body-parser
+-chance
+-express
 
-## Let's get started already!
+## Let's get things moving!
 
 - Install all dependencies (using the `npm install` command).
-- Run the development web server using the `node express_server.js` command.
+- Run the development web server using the `npm run local` command.
